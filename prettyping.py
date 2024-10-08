@@ -7,6 +7,8 @@ from rich.table import Table
 import sys
 
 # Function to perform a ping, adapting for Windows and Linux, and capturing RTT
+start = time.time()
+
 def ping(host):
     if os.name == 'nt':  # If Windows
         # Execute the ping command and capture output
@@ -37,6 +39,7 @@ def ping(host):
 
 # Function to generate a table of ping success/failure percentages and average RTT
 def draw_table(target, success, fail, avg_rtt):
+    global start
     total = success + fail
     if total == 0:
         total = 1  # Avoid division by zero
@@ -54,6 +57,7 @@ def draw_table(target, success, fail, avg_rtt):
     table.add_row("Success %", f"[green]{success_percent:.2f}%[/green]")
     table.add_row("Fail %", f"[red]{fail_percent:.2f}%[/red]")
     table.add_row("Average RTT (ms)", f"{avg_rtt:.2f} ms")
+    table.add_row("Elapsed time (seconds):", f"{int(time.time() - start)}")
 
     return table
 
