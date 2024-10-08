@@ -50,8 +50,8 @@ def draw_table(target, success, fail, avg_rtt):
 
     # Add rows to the table for success, fail percentages, and average RTT
     table.add_row("Target", target)
-    table.add_row("Success %", f"{success_percent:.2f}%")
-    table.add_row("Fail %", f"{fail_percent:.2f}%")
+    table.add_row("Success %", f"[green]{success_percent:.2f}%[/green]")
+    table.add_row("Fail %", f"[red]{fail_percent:.2f}%[/red]")
     table.add_row("Average RTT (ms)", f"{avg_rtt:.2f} ms")
 
     return table
