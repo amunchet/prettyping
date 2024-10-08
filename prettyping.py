@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import time
 import subprocess
@@ -22,7 +23,7 @@ def ping(host):
             return True, 0
     else:  # If Linux/Unix (including macOS)
         # Execute the ping command and capture output
-        result = subprocess.run(f"ping -c 1 {host}", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        result = subprocess.run(f"ping -c 1 {host}".split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         if result.returncode == 0:
             # Extract RTT from the output
             lines = result.stdout.splitlines()
